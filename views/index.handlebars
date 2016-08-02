@@ -1,0 +1,64 @@
+<h1>Eat the Burgs!</h1> 
+
+<h2>Burgs that you wanna eat</h2>
+
+<ul> 
+  {{#each burgers}}
+    {{#unless this.devoured}}
+      <li>
+        {{this.burger_name}}
+
+          <p>When did you eat that burg:</p>
+           {{this.date}}
+
+        <form action="burgs/update/{{this.id}}?_method=PUT" method="POST"> 
+          <input type="hidden" name="devoured" value="true"> 
+          <button type="submit">EAT THE BURG</button>
+        </form> 
+
+        {{> burgs/delete-burger}}
+
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Burgs that have been eaten.</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if this.devoured}}
+      <li> 
+        {{this.burger_name}}
+
+        <p>When did you eat that burg:</p>
+        {{this.date}}
+
+        <form action="burgs/update/{{this.id}}?_method=PUT" method="POST"> 
+          <input type="hidden" name="devoured" value="false"> 
+          <button type="submit">UN EAT IT? (test) </button>
+        </form>
+        {{> burgs/delete-burger}}
+      </li> 
+    {{/if}}
+  {{/each}}
+</ul> 
+
+<h2>Add a Burg</h2> 
+  <form class="create-update-form" action="burgs/create" method="POST">
+
+    <div class="form-group"> 
+      <label for="burg">Burg Name:</label>
+      <input type="text" id="burg" name="burger_name">
+    </div>
+
+    <div class="form-group"> 
+      <label for="eaten">Eaten?</label>
+      <br> 
+      <input type="radio" name="devoured" value="1" checked> EATEN!
+      </br>
+      <input type="radio" name="devoured" value="0"> Not eaten
+    </div> 
+
+    <button type="submit">Add Burg</button>
+  </form> 
