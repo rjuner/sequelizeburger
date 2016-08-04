@@ -1,30 +1,31 @@
 var express = require('express');
-var methodOverride = require('method-override');
-var bodyParser = require('body-parser');
-
 var app = express(); 
+var bodyParser = require('body-parser');
+var models = require('./models');
 
-app.use(express.static(process.cwd() + '/public')); 
+var PORT = process.env.PORT || 3030; 
 
-app.use(bodyParser.urlencoded({
-	extended: false
-}))
+//var methodOverride = require('method-override');
 
-//override with POST having ?_method=DELETE 
-
-app.use(methodOverride('_method')); 
 var exphbs = require('express-handlebars'); 
-
-app.engine('handlebars', exphbs({
-	defaultLayout: 'main'
-}));
-
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars'); 
+app.use(bodyParser.urlencoded({extended: false}));
 
-var routes = require('./controllers/burgers_controller.js'); 
 
-app.use('/', routes); 
 
-var port = 3030; 
 
-app.listen(port); 
+// app.use(express.static(process.cwd() + '/public')); 
+
+// //override with POST having ?_method=DELETE 
+
+// app.use(methodOverride('_method')); 
+
+// var routes = require('./controllers/burgers_controller.js'); 
+
+// app.use('/', routes); 
+
+
+app.listen(PORT, function(){
+	console.log('Magic happens on port: ' + PORT);
+}); 
