@@ -11,17 +11,17 @@
         {{#unless devoured}}
 
         <div class="col-xs-9 text-center">  
-            {{id}} {{name}}
+          <h4>  {{id}} {{name}}</h4>
           {{!-- {{createdAt}} --}}
         </div> 
 
 
-        <div class="col-xs-3 text-center">
-          <form action="burgs/update/{{id}}?_method=PUT" method="POST"> 
+{{!--         <div class="col-xs-3 text-center">
+ --}}          <form action="burgs/update/{{id}}?_method=PUT" method="POST"> 
             <input type="hidden" name="devoured" value="true"> 
             <button type="submit">EAT THE BURG</button>
           </form> 
-        </div> 
+{{!--         </div>  --}}
 
           {{!-- {{> burgs/delete-burger}} --}}
         {{/unless}}
@@ -35,7 +35,7 @@
 
             <form action="burgs/update/{{id}}?_method=PUT" method="POST"> 
               <input type="hidden" name="devoured" value="false"> 
-              <button type="submit">UN EAT IT? (test) </button>
+              <button type="submit">UN-EAT IT?</button>
             </form>
 
         {{!-- {{> burgs/delete-burger}} --}}

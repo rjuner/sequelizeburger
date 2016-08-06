@@ -31,7 +31,7 @@ app.post('/create', function(req, res){
 		devoured: req.body.devoured
 	}).then(function(){
 		res.redirect("/theburgs");
-	})
+	});
 	
 });
 
