@@ -18,6 +18,7 @@
     "password": "kjn97anylructvs2",
     "database": "ig1wcqejf48mojux",
     "host": "gx97kbnhgjzh3efb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "use_env_variable": "mysql://if69ap5x8xvamoqk:kjn97anylructvs2@gx97kbnhgjzh3efb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ig1wcqejf48mojux"
   }
 }
