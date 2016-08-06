@@ -59,9 +59,6 @@ app.put('/burgs/update/:id', function(req, res){
 	
 });
 
-app.delete('/')
-
-
 
 // app.use(express.static(process.cwd() + '/public')); 
 
