@@ -25,6 +25,14 @@ app.get('/theburgs', function(req, res){
 	//res.render('index')
 });
 
+app.get('/', function(req, res){
+	models.theBurgers.findAll().then(function(result) {
+		// body...
+		res.render("index", {bnme: result});
+	})
+	//res.render('index')
+});
+
 app.post('/create', function(req, res){
 	models.theBurgers.create({
 		name: req.body.name,
