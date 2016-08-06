@@ -1,9 +1,12 @@
 'use strict';
+var Sequelize = require('sequelize');
+
 module.exports = function(sequelize, DataTypes) {
   var theBurgers = sequelize.define('theBurgers', {
     name: DataTypes.STRING,
-    devoured: DataTypes.BOOLEAN{
-      allowNull: false
+    devoured: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
       },
     createdAt: {
       allowNull: false, 

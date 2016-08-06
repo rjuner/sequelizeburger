@@ -2,6 +2,10 @@ var express = require('express');
 var app = express(); 
 var bodyParser = require('body-parser');
 var models = require('./models');
+var methodOverride = require('method-override');
+
+app.use(methodOverride('_method'));
+
 
 var PORT = process.env.PORT || 3030; 
 
@@ -12,6 +16,42 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars'); 
 app.use(bodyParser.urlencoded({extended: false}));
 
+
+app.get('/theburgs', function(req, res){
+	models.theBurgers.findAll().then(function(result) {
+		// body...
+		res.render("index", {bnme: result});
+	})
+	//res.render('index')
+});
+
+app.post('/create', function(req, res){
+	models.theBurgers.create({
+		name: req.body.name,
+		devoured: req.body.devoured
+	}).then(function(){
+		res.redirect("/theburgs");
+	})
+	
+});
+
+
+app.put('/burgs/update/:id', function(req, res){
+	models.theBurgers.update({
+		devoured: req.body.devoured
+	},{
+		where: {
+			id: req.params.id
+		}
+	}).then(function(data){
+		// body...
+		console.log("updated:", data)
+		res.redirect("/theburgs");
+	});
+	
+});
+
+app.delete('/')
 
 
 
